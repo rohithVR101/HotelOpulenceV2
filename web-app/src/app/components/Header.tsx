@@ -5,9 +5,7 @@ import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import Stack from "@mui/joy/Stack";
 import Avatar from "@mui/joy/Avatar";
-import Input from "@mui/joy/Input";
 import Button from "@mui/joy/Button";
-import Tooltip from "@mui/joy/Tooltip";
 import Dropdown from "@mui/joy/Dropdown";
 import Menu from "@mui/joy/Menu";
 import MenuButton from "@mui/joy/MenuButton";
@@ -15,13 +13,13 @@ import MenuItem from "@mui/joy/MenuItem";
 import ListDivider from "@mui/joy/ListDivider";
 
 import HotelIcon from "@mui/icons-material/Hotel";
-import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useUserStore } from "@/store/UserStore";
+import { signOutUser } from "@/auth/FirebaseAuthenticationHelper";
 
 export default function Header() {
   const userStore = useUserStore();
@@ -175,7 +173,7 @@ export default function Header() {
                   </MenuItem>
                 </Link>
                 <ListDivider />
-                <MenuItem onClick={() => userStore.signOut()}>
+                <MenuItem onClick={() => signOutUser()}>
                   <LogoutRoundedIcon />
                   Log out
                 </MenuItem>

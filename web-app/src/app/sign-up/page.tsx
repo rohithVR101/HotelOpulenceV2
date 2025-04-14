@@ -10,9 +10,9 @@ import Button from "@mui/joy/Button";
 import Input from "@mui/joy/Input";
 import { useUserStore } from "@/store/UserStore";
 import { useRouter } from "next/navigation";
+import { createNewUserWithEmailAndPassword } from "@/auth/FirebaseAuthenticationHelper";
 
 function SignUp() {
-  const userStore = useUserStore();
   let router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -41,8 +41,7 @@ function SignUp() {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      userStore
-        .createNewUserWithEmailAndPassword(formData.email, formData.password)
+      createNewUserWithEmailAndPassword(formData.email, formData.password)
         .then(() => {
           router.push("/log-in");
         })

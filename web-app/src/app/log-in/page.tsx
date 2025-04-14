@@ -10,6 +10,10 @@ import Header from "@/app/components/Header";
 import { useUserStore } from "@/store/UserStore";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import {
+  loginWithEmailAndPassword,
+  loginWithGoogle,
+} from "@/auth/FirebaseAuthenticationHelper";
 
 function SignIn() {
   const userStore = useUserStore();
@@ -40,8 +44,7 @@ function SignIn() {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      userStore
-        .loginWithEmailAndPassword(formData.email, formData.password)
+      loginWithEmailAndPassword(formData.email, formData.password)
         .then(() => {
           router.push("/");
         })
@@ -60,8 +63,7 @@ function SignIn() {
   };
 
   const signInWithGoogle = async () => {
-    await userStore
-      .loginWithGoogle()
+    await loginWithGoogle()
       .then(() => {
         router.push("/");
       })

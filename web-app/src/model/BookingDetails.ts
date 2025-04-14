@@ -3,7 +3,7 @@ import TripDetails from "./TripDetails";
 
 export default interface BookingDetails {
     trip: TripDetails;
-    room: RoomDetails;
+    room: RoomDetails | null;
     roomCount: number;
     totalCost: number;
 }

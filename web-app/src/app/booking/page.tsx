@@ -184,7 +184,7 @@ export default function Booking() {
           )}
         </div>
         <div className={styles.bookingContent}>
-          {store.userSelection && (
+          {store.userSelection && store.userSelection.room && (
             <RoomCard
               cardType="selected"
               roomDetails={store.userSelection.room}

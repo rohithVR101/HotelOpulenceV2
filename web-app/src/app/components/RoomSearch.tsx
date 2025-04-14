@@ -15,7 +15,7 @@ interface TypeProp {
 
 export default function RoomSearch(props: TypeProp) {
   const userStore = useUserStore();
-  const previousSearch: TripDetails = userStore.userSearch;
+  const previousSearch: TripDetails = userStore.userSelection.trip;
   const [fromDate, setFromDate] = useState(previousSearch.fromDate);
   const [toDate, setToDate] = useState(previousSearch.toDate);
   const [count, setCount] = useState(previousSearch.count);
@@ -104,10 +104,13 @@ export default function RoomSearch(props: TypeProp) {
           size="lg"
           sx={{ marginTop: "2rem" }}
           onClick={() => {
-            userStore.setUserSearch({
-              fromDate: fromDate,
-              toDate: toDate,
-              count: count,
+            userStore.setUserSelection({
+              ...userStore.userSelection,
+              trip: {
+                fromDate: fromDate,
+                toDate: toDate,
+                count: count,
+              },
             });
           }}
         >

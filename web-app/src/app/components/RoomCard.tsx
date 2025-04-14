@@ -37,7 +37,7 @@ export default function RoomCard({ cardType, roomDetails }: RoomCardProps) {
       <Card sx={{ width: 320 }}>
         <div>
           <Typography level="title-lg">
-            {Math.ceil(store.userSearch.count / roomDetails.capacity)} x{" "}
+            {Math.ceil(store.userSelection.trip.count / roomDetails.capacity)} x{" "}
             {roomDetails.name}
           </Typography>
           {cardType === "option" && (
@@ -133,18 +133,20 @@ export default function RoomCard({ cardType, roomDetails }: RoomCardProps) {
                       $
                       {roomDetails.cost *
                         Math.ceil(
-                          store.userSearch.count / roomDetails.capacity
+                          store.userSelection.trip.count / roomDetails.capacity
                         )}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography level="body-sm">
                       Nightly Cost : ${roomDetails.cost} x{" "}
-                      {Math.ceil(store.userSearch.count / roomDetails.capacity)}{" "}
+                      {Math.ceil(
+                        store.userSelection.trip.count / roomDetails.capacity
+                      )}{" "}
                       = $
                       {roomDetails.cost *
                         Math.ceil(
-                          store.userSearch.count / roomDetails.capacity
+                          store.userSelection.trip.count / roomDetails.capacity
                         )}
                     </Typography>
                   </AccordionDetails>
@@ -156,7 +158,9 @@ export default function RoomCard({ cardType, roomDetails }: RoomCardProps) {
                 <Typography fontSize="lg" fontWeight="lg">
                   $
                   {roomDetails.cost *
-                    Math.ceil(store.userSearch.count / roomDetails.capacity)}
+                    Math.ceil(
+                      store.userSelection.trip.count / roomDetails.capacity
+                    )}
                 </Typography>
               </>
             )}
@@ -170,14 +174,16 @@ export default function RoomCard({ cardType, roomDetails }: RoomCardProps) {
               sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
               onClick={() => {
                 store.setUserSelection({
-                  trip: store.userSearch,
+                  ...store.userSelection,
                   room: roomDetails,
                   roomCount: Math.ceil(
-                    store.userSearch.count / roomDetails.capacity
+                    store.userSelection.trip.count / roomDetails.capacity
                   ),
                   totalCost:
                     roomDetails.cost *
-                    Math.ceil(store.userSearch.count / roomDetails.capacity),
+                    Math.ceil(
+                      store.userSelection.trip.count / roomDetails.capacity
+                    ),
                 });
                 router.push("/booking");
               }}
