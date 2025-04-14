@@ -1,0 +1,31 @@
+.bookingContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.userDetailsConfirmation {
+  flex: 1;
+  min-width: 300px;
+}
+
+.bookingContent {
+  flex: 2;
+  min-width: 400px;
+}
+
+.bookingTitle {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
